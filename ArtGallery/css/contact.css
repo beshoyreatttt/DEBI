@@ -1,0 +1,144 @@
+/* start nav */
+body{
+  background:#59ABE3;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: #000000;
+}
+/* start nav */
+nav .container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+nav .container .logo{
+  font-size: 24px;
+  color: #24D5B4;
+  margin-left: 23px;
+}
+nav .container .logo h2{
+  color: #fff;
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+}
+
+nav .container .nav-items .items{
+  display: flex;
+}
+.nav-items ul li{
+list-style: none;
+padding: 10px;
+}
+.nav-items ul li a{
+  text-decoration: none;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 17px;
+  --c: no-repeat linear-gradient(#24D5B4 0 0);
+  background: 
+    var(--c)  calc(-101% + var(--p,0%)) 100%,
+    var(--c)  calc( 201% - var(--p,0%)) 0;
+  background-size: 50.1% var(--p,.08em);
+  transition: .3s var(--t,0s), background-position .3s calc(.3s - var(--t,0s));
+}
+.nav-items ul li a:hover{
+  --p: 101%;
+  --t: 0.3s;
+  color: #fff;
+}
+.nav-items ul button{
+  padding: 3px 15px;
+  background-color: #24D5B4;
+  color: #ffff;
+  border: 0 ;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.5s;
+  margin-right: 23px;
+}
+.nav-items ul button:hover{
+  font-size: 15px;
+}
+
+/* end nav */
+
+.form{
+  width:340px;
+  height:440px;
+  background:#e6e6e6;
+  border-radius:8px;
+  box-shadow:0 0 40px -10px #000;
+  margin:100px auto;
+  padding:20px 30px;
+  max-width:100%;
+  box-sizing:border-box;
+  font-family:'Montserrat',sans-serif;
+  position:relative
+}
+h2{
+  margin:10px 0;
+  padding-bottom:10px;
+  width:180px;
+  color:#78788c;
+  border-bottom:3px solid #78788c
+}
+input{
+  width:100%;
+  padding:10px;
+  box-sizing:border-box;
+  background:none;
+  outline:none;
+  resize:none;
+  border:0;
+  font-family:'Montserrat',sans-serif;
+  transition:all .3s;
+  border-bottom:2px solid #bebed2
+}
+input:focus{
+  border-bottom:2px solid #78788c
+}
+p:before{
+  content:attr(type);
+  display:block;
+  margin:28px 0 0;
+  font-size:14px;
+  color:#5a5a5a
+}
+button{
+  float:right;
+  padding:8px 12px;
+  margin:8px 0 0;
+  font-family:'Montserrat',sans-serif;
+  border:2px solid #78788c;
+  background:0;
+  color:#5a5a6e;
+  cursor:pointer;
+  transition:all .3s
+}
+button:hover{
+  background:#78788c;
+  color:#fff
+}
+ .info{
+  content:'Hi';
+  position:absolute;
+  bottom:-15px;
+  right:-20px;
+  background:#50505a;
+  color:#fff;
+  width:320px;
+  padding:16px 4px 16px 0;
+  border-radius:6px;
+  font-size:13px;
+  box-shadow:10px 10px 40px -14px #000
+} 
+span{
+  margin:0 5px 0 15px
+}

@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #eee;
+}
+.container{
+  margin:0 10%;
+}
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: #000000;
+}
+/* start nav */
+nav .container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+nav .container .logo{
+  font-size: 24px;
+  color: #24D5B4;
+}
+nav .container .logo h2{
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+  typing 3.5s steps(40, end),
+  blink-caret .75s step-end infinite;
+}
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+nav .container .nav-items .items{
+  display: flex;
+}
+.nav-items ul li{
+list-style: none;
+padding: 10px;
+}
+.nav-items ul li a{
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 17px;
+  --c: no-repeat linear-gradient(#24D5B4 0 0);
+  background: 
+    var(--c)  calc(-101% + var(--p,0%)) 100%,
+    var(--c)  calc( 201% - var(--p,0%)) 0;
+  background-size: 50.1% var(--p,.08em);
+  transition: .3s var(--t,0s), background-position .3s calc(.3s - var(--t,0s));
+}
+.nav-items ul li a:hover{
+  --p: 101%;
+  --t: 0.3s;
+  color: #fff;
+}
+.nav-items ul button{
+  padding: 3px 15px;
+  background-color: #24D5B4;
+  color: #ffff;
+  border: 0 ;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.5s;
+}
+.nav-items ul button:hover{
+  font-size: 15px;
+}
+
+/* end nav */
+
+/* start about */
+.about-section{
+  height: 90vh;
+}
+.about-section .container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  height: 100%;
+}
+
+
+.about-section .container .fist-img {
+  background-image: url(images/work-x6-pvriy2vozkvpyd0hw4nn6bz0a419ky7fu3ikuy5ohs.jpg);
+  background-size: cover;
+  background-position: center;
+  grid-column: 1/3;
+  grid-row: 1/5;
+  margin-top: 23px;
+}
+.about-section .container .about-section-desc{
+  background: #fff;
+grid-column: 3/6;
+grid-row: 2/4;
+padding: 23px;
+}
+.about-section .container .about-section-desc p{
+    color: #54595F;
+    font-size: 14px;
+    line-height: 1.8em;
+    margin-bottom: 10px;
+}
+.about-section .container .chip-img{
+  background-image: url(images/OIP.jpeg);
+  background-size:cover;
+  background-position: center center;
+  grid-column: 6/8;
+  grid-row: -5/-2;
+} 
+.about-section .container .chip-img-desc{
+  background-color: #fff;
+  grid-column: 6/8;
+  text-align: center;
+  width: 100%;
+  height: 70%;
+}
+.about-section .container .chip-img-desc h3{
+  padding: 30px;
+  font-size: 30px;
+  font-weight: bold;
+}
+/* end about */
+
+/* start portofolio */
+.portofolio .container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+.portofolio .portfolio-desc{
+  grid-column: 1/3;
+  padding: 50px 12px;
+}
+.portofolio .portfolio-desc h3{
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.portofolio .portfolio-img{
+  grid-column: 3/5;
+}
+.portofolio .portfolio-img .por-img{
+  width: 100%;
+  height: 100%;
+  background-image: url(images/project-vid-pvriy2vozktcu4vgnnr0hki5vpol2us48e96tu7e2o.jpg);
+  background-size:cover;
+  background-position: center center;
+} 
+.portofolio .portfolio-header{
+  grid-column: 5/7;
+  text-align: center;
+  padding: 50px 0;
+}
+.portofolio .portfolio-header h3{
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.portofolio .portfolio-img2 .por-img2{
+  width: 100%;
+  height: 100%;
+  background-image: url(images/lucas-benjamin-wQLAGv4_OYs-unsplash-scaled-pvriy0225kz7fbvy891r0d2c3ks22xov1gicuajmtg.jpg);
+  background-size:cover;
+  background-position: center center;
+  
+}
+/* portofolio end */
+
+
+/* services start */
+
+.services .container{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr ;
+}
+
+.services .container .services-sec{
+  grid-column: 1/3;
+  grid-row:1/2 ;
+  background: #ffefbb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.services .container .contact-sec{
+  background: #24d5b4;
+  grid-column:1/3;
+  grid-row: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.services .container .home-img{
+  background-image: url(images/bg1-pvriy0zz5a7auofwvw56so7t7ju270y36ujwjg1ss4.jpg);
+  background-size:cover;
+  background-position: center center;
+  grid-column:1/3;
+  grid-row: 3/4;
+}
+.services .container .telphone-img{
+  background-image: url(images/eduardo-sanchez-rSRWst-IGlA-unsplash-e1589015608501-pvriy4rfsyhfezd5oy88isw4dbxfxwb8ct8hxs4o4m.jpg);
+  background-size:cover;
+  background-position: center center;
+  grid-column:3/7;
+  grid-row: 1/3;
+}
+.services .container .services-desc{
+  grid-column:7/8;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  line-height: 1.5;
+  color: #54595F;
+    font-size: 14px;
+    line-height: 1.8em;
+    background-color: #fff;
+}
+.services .container .services-desc h3{
+  font-size: 20px;
+  color: #000000;
+}
+.services .container .sevices-black{
+  background-color: #000000;
+  color: #fff;
+
+  grid-column:3/5;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.services .container .sevices-black a {
+  color: #fff;
+}
+.services .container .sevices-red-desc{
+  background-color: #f2295b;
+  color: #fff;
+  grid-column:5/8;
+  grid-row: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+/* services end */
+/* footer start */
+
+footer .container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 19px;
+  margin-bottom: 19px;
+}
+
+footer .container .footer-icons ul{
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+footer .container .footer-icons ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+/* footer end */
