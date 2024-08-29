@@ -1,12 +1,12 @@
 //Declaring Variables
 let arrayOfTips = [
-  '"1- Stay positive, work hard, make it happen."',
-  '"2- Take a moment each day to reflect on what you\'re thankful for. This can boost your mood and perspective."',
-  '"3- Drink plenty of water throughout the day. Staying hydrated is essential for physical and mental health."',
-  '"4- Break larger tasks into smaller, manageable goals. This makes them less overwhelming and easier to achieve."',
-  '"5- Aim for 7-9 hours of quality sleep each night to enhance your mood and productivity."',
-  '"6- Spend a few minutes each day practicing mindfulness or meditation to reduce stress and increase awareness."',
-  '"7- Spend a few minutes each day practicing mindfulness or meditation to reduce stress and increase awareness."',
+  '"Stay positive, work hard, make it happen."',
+  '"Take a moment each day to reflect on what you\'re thankful for. This can boost your mood and perspective."',
+  '"Drink plenty of water throughout the day. Staying hydrated is essential for physical and mental health."',
+  '"Break larger tasks into smaller, manageable goals. This makes them less overwhelming and easier to achieve."',
+  '"Aim for 7-9 hours of quality sleep each night to enhance your mood and productivity."',
+  '"Spend a few minutes each day practicing mindfulness or meditation to reduce stress and increase awareness."',
+  '"Spend a few minutes each day practicing mindfulness or meditation to reduce stress and increase awareness."',
 ];
 let counter = 0;
 let tipElement = document.getElementById("dailyTip");
@@ -16,34 +16,42 @@ let taskPriorityInput = document.getElementById("taskPriorityInput");
 let arrayOfTasks = [];
 let addOrUpdateTaskBtn = document.getElementById("addOrUpdateTaskBtn");
 let liElements = "";
+let currentElement = 0;
 //start tpis Slider
-// function tipsSlider() {
-//   tipElement.innerHTML = arrayOfTips[counter++];
-//   if (counter >= arrayOfTips.length - 1) {
-//     counter = 0;
-//   }
-//   setTimeout(tipsSlider, 30000);
-// }
-// tipsSlider();
+function tipsSlider() {
+  tipElement.innerHTML = arrayOfTips[counter++];
+  if (counter >= arrayOfTips.length) {
+    counter = 0;
+  }
+  setTimeout(tipsSlider, 30000);
+}
+
+tipsSlider();
 
 //end tips Slider
 
 // start create and update
 // first get old data from local storage
 let item = JSON.parse(localStorage.getItem("tasks"));
-for (let i = 0; i < item.length; i++) {
-  arrayOfTasks.push(item[i]);
+if (localStorage.length) {
+  for (let i = 0; i < item.length; i++) {
+    arrayOfTasks.push(item[i]);
+  } 
 }
+
 
 //second render storage elements
 showElements();
 
-addOrUpdateTaskBtn.addEventListener("click", function () {
-  if (addOrUpdateTaskBtn.innerHTML == "Add Task") {
-    create();
-  } else {
-    update();
+addOrUpdateTaskBtn.addEventListener('click', function () {
+  if (taskNameInput.value&&taskDateInput.value) {
+    if (addOrUpdateTaskBtn.innerHTML == "Add Task") {
+      create();
+    } else {
+      update();
+    }
   }
+
 });
 function emptyInputs() {
   taskNameInput.value = "";
@@ -80,22 +88,38 @@ function showElements() {
           </div>
          </li>`;
   }
+
   li.innerHTML = liElements;
+  
+  // edite event
+  let editeBtn = document.querySelectorAll(".edit");
+  editeBtn.forEach(function (button, index) {
+    button.addEventListener('click', function () {
+      currentElement = index;
+      addOrUpdateTaskBtn.innerHTML = "Edite Task";
+      taskNameInput.value = `${arrayOfTasks[index].taskName}`;
+      taskDateInput.value = `${arrayOfTasks[index].taskDate}`;
+      taskPriorityInput.value = `${arrayOfTasks[index].taskPriority}`;
+    });
+  });
+
+
+  //Delete elements
+let deleteElement = document.querySelectorAll(".delete");
+deleteElement.forEach(function (button, index) {
+  button.addEventListener('click', function () {
+    if (addOrUpdateTaskBtn.innerHTML === "Add Task") {
+    arrayOfTasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(arrayOfTasks));
+    showElements();
+    }  
+  });
+});
 }
 
 //update elements
 
-let editeBtn = document.querySelectorAll(".edit");
-let currentElement = 0;
-editeBtn.forEach(function (button, index) {
-  button.addEventListener("click", function () {
-    currentElement = index;
-    addOrUpdateTaskBtn.innerHTML = "Edite Task";
-    taskNameInput.value = `${arrayOfTasks[index].taskName}`;
-    taskDateInput.value = `${arrayOfTasks[index].taskDate}`;
-    taskPriorityInput.value = `${arrayOfTasks[index].taskPriority}`;
-  });
-});
+
 
 function update() {
   arrayOfTasks[currentElement].taskName = taskNameInput.value;
@@ -107,12 +131,4 @@ function update() {
   showElements();
 }
 
-//Delete elements
-let deleteElement = document.querySelectorAll(".delete");
-deleteElement.forEach(function (button, index) {
-  button.addEventListener("click", function () {
-    arrayOfTasks.splice(index, 1);
-    localStorage.setItem("tasks", JSON.stringify(arrayOfTasks));
-    showElements();
-  });
-});
+
